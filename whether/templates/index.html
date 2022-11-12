@@ -1,3 +1,4 @@
+{% load octicons %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,30 @@
 <body>
   <div class="bg-info">
     <h2 class="">uniWhether forCast</h2>
+  </div>
+  <div>
+    <form method="post" class="col-md-6 col-md-offset-3 mx-auto">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" name="city" placeholder="search city"/>
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit"> 
+                    {% octicon 'search' %}
+                </button>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="row">
+    {% if data.city is not None %}
+        <div class="col-md-6 col-md-offset-3 mx auto">
+            <h1> {{ data.city | capfirst}}</h1>
+            <h5>{{data.whether_description}}</h5>
+            <p>temperature: {{data.whether_temperature}}</p>
+            <p>humidity: {{data.whether_humidity}}</p>
+            <p>pressure: {{data.whether_pressure}}</p>
+        </div>
+    {% endif %}
   </div>
 </body>
 </html>

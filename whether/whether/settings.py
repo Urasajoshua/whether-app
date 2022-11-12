@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'uniWhether',
     'django_bootstrap5',
+    'octicons',
 ]
 
 MIDDLEWARE = [
